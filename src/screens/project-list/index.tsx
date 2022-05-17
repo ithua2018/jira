@@ -1,4 +1,4 @@
-import { useEffect, useState, React } from "react"
+import { useEffect, useState } from "react"
 import { cleanObject, useDebounce, useMount } from "utils"
 import { List } from "./list"
 import { SearchPanel } from "./search-panel"
