@@ -2,14 +2,12 @@ import { useEffect, useState } from "react"
 
 export  const isFlasy = (value:unknown) => value === 0 ? false : !value
 
-
-export const cleanObject  = (object:Object) => {
+export const isVoid = (value:unknown) => value ===undefined || value === '' || value === null
+export const cleanObject  = (object:{[key: string]: unknown}) => {
     const result = {...object}
     Object.keys(object).forEach(key=>{
-        // @ts-ignore
         const value = result[key]
-        if(isFlasy(value)) {
-            // @ts-ignore
+        if(isVoid(value)) {
             delete result[key]
         }
     })
@@ -21,6 +19,7 @@ export const cleanObject  = (object:Object) => {
 export const useMount = (callBack: ()=> void) => {
     useEffect(()=>{
         callBack()  
+        //eslint-disable-next-line  react-hooks/exhaustive-deps
     }, [])
 }
 
